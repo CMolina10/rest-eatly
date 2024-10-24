@@ -14,7 +14,6 @@ interface Restaurant {
   address: string;
   cuisine: string;
   allergenInfo: string[];
-  rating: number;
   allergenLink: string;
   displayLink: string | null;
 }
@@ -35,7 +34,6 @@ export default function Restaurants() {
       address: "544 S Upper St, Lexington, KY 40508",
       cuisine: "Southern",
       allergenInfo: ["shellfish-free", "treenut-free", "peanut-free"],
-      rating: 4.4,
       allergenLink: "https://www.raisingcanes.com/allergens/",
       displayLink: "Raising Cane's Allergen Menu",
     },
@@ -47,7 +45,6 @@ export default function Restaurants() {
       address: "357 S Limestone, Lexington, KY 40508",
       cuisine: "American",
       allergenInfo: ["shellfish-free", "treenut-free", "peanut-free"],
-      rating: 3.0,
       allergenLink:
         "https://www.mcdonalds.com/content/dam/sites/uk/nfl/pdf/nutrition/allergen-booklet-16102024.pdf",
       displayLink: "McDonald's Allergen Menu",
@@ -151,7 +148,7 @@ export default function Restaurants() {
                 className="bg-white overflow-hidden shadow rounded-lg"
               >
                 <div className="p-6">
-                  <h3 className="text-lg font-medium text-gray-900">
+                  <h3 className="text-lg font-medium text-gray-900 ">
                     {restaurant.name}
                   </h3>
                   <p className="mt-1 text-gray-500">{restaurant.description}</p>
