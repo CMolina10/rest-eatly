@@ -3,6 +3,7 @@
 
 import { useState } from "react";
 import Navbar from "../components/Navbar";
+import ReviewForm from "../components/ReviewForm";
 import { Search, X } from "lucide-react";
 import Link from "next/link";
 
@@ -23,7 +24,18 @@ interface FilterTag {
   label: string;
 }
 
+// Add Review interface
+interface Review {
+  id: number;
+  restaurantId: number;
+  rating: number;
+  reviewText: string;
+}
+
 export default function Restaurants() {
+  // Add this to your existing state management
+  const [reviews, setReviews] = useState<Review[]>([]);
+
   // Sample data - this would come from your backend
   const [restaurants] = useState<Restaurant[]>([
     {
@@ -49,6 +61,23 @@ export default function Restaurants() {
         "https://www.mcdonalds.com/content/dam/sites/uk/nfl/pdf/nutrition/allergen-booklet-16102024.pdf",
       displayLink: "McDonald's Allergen Menu",
     },
+    {
+      id: 3,
+      name: "Chipotle",
+      description:
+        "Fast-food chain offering Mexican fare, including design-your-own burritos, tacos & bowls.",
+      address: "345 S Limestone, Lexington, KY 40508",
+      cuisine: "Mexican",
+      allergenInfo: [
+        "egg-free",
+        "fish-free",
+        "shellfish-free",
+        "treenut-free",
+        "peanut-free",
+      ],
+      allergenLink: "https://www.chipotle.com/allergens",
+      displayLink: "Chipotle's Allergen Menu",
+    },
     // Add more sample restaurants as needed
   ]);
 
@@ -63,6 +92,19 @@ export default function Restaurants() {
     { id: "wheat-free", label: "Wheat Free" },
     { id: "soy-free", label: "Soy Free" },
   ];
+
+  // Add this handler
+  const handleSubmitReview = (review: {
+    restaurantId: number;
+    rating: number;
+    reviewText: string;
+  }) => {
+    const newReview = {
+      ...review,
+      id: reviews.length + 1,
+    };
+    setReviews((prev) => [...prev, newReview]);
+  };
 
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
@@ -148,7 +190,7 @@ export default function Restaurants() {
                 className="bg-white overflow-hidden shadow rounded-lg"
               >
                 <div className="p-6">
-                  <h3 className="text-lg font-medium text-gray-900 ">
+                  <h3 className="text-lg font-medium text-gray-900">
                     {restaurant.name}
                   </h3>
                   <p className="mt-1 text-gray-500">{restaurant.description}</p>
@@ -177,6 +219,12 @@ export default function Restaurants() {
               </div>
             ))}
           </div>
+
+          {/* Review System */}
+          <ReviewForm
+            restaurants={restaurants}
+            onSubmitReview={handleSubmitReview}
+          />
         </div>
       </div>
     </div>
