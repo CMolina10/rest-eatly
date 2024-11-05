@@ -17,6 +17,7 @@ interface Restaurant {
   allergenInfo: string[];
   allergenLink: string;
   displayLink: string | null;
+  yelpUrl: string;
 }
 
 interface FilterTag {
@@ -48,6 +49,8 @@ export default function Restaurants() {
       allergenInfo: ["shellfish-free", "treenut-free", "peanut-free"],
       allergenLink: "https://www.raisingcanes.com/allergens/",
       displayLink: "Raising Cane's Allergen Menu",
+      yelpUrl:
+        "https://www.yelp.com/biz/raising-canes-chicken-fingers-lexington",
     },
     {
       id: 2,
@@ -60,6 +63,7 @@ export default function Restaurants() {
       allergenLink:
         "https://www.mcdonalds.com/content/dam/sites/uk/nfl/pdf/nutrition/allergen-booklet-16102024.pdf",
       displayLink: "McDonald's Allergen Menu",
+      yelpUrl: "https://www.yelp.com/biz/mcdonalds-lexington-3",
     },
     {
       id: 3,
@@ -77,6 +81,7 @@ export default function Restaurants() {
       ],
       allergenLink: "https://www.chipotle.com/allergens",
       displayLink: "Chipotle's Allergen Menu",
+      yelpUrl: "https://www.yelp.com/biz/chipotle-mexican-grill-lexington-7",
     },
     // Add more sample restaurants as needed
   ]);
@@ -219,12 +224,6 @@ export default function Restaurants() {
               </div>
             ))}
           </div>
-
-          {/* Review System */}
-          <ReviewForm
-            restaurants={restaurants}
-            onSubmitReview={handleSubmitReview}
-          />
         </div>
       </div>
     </div>
