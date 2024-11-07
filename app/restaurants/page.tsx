@@ -17,6 +17,8 @@ interface Restaurant {
   allergenInfo: string[];
   allergenLink: string;
   displayLink: string | null;
+  menuLink: string;
+  menuDisplayLink: string | null;
   yelpUrl: string;
 }
 
@@ -47,6 +49,8 @@ export default function Restaurants() {
       address: "544 S Upper St, Lexington, KY 40508",
       cuisine: "Southern",
       allergenInfo: ["shellfish-free", "treenut-free", "peanut-free"],
+      menuLink: "https://www.raisingcanes.com/full-menu/",
+      menuDisplayLink: "Raising Cane's Menu",
       allergenLink: "https://www.raisingcanes.com/allergens/",
       displayLink: "Raising Cane's Allergen Menu",
       yelpUrl:
@@ -60,6 +64,8 @@ export default function Restaurants() {
       address: "357 S Limestone, Lexington, KY 40508",
       cuisine: "American",
       allergenInfo: ["shellfish-free", "treenut-free", "peanut-free"],
+      menuLink: "https://www.mcdonalds.com/us/en-us/full-menu.html",
+      menuDisplayLink: "McDonald's Menu",
       allergenLink:
         "https://www.mcdonalds.com/content/dam/sites/uk/nfl/pdf/nutrition/allergen-booklet-16102024.pdf",
       displayLink: "McDonald's Allergen Menu",
@@ -79,6 +85,8 @@ export default function Restaurants() {
         "treenut-free",
         "peanut-free",
       ],
+      menuLink: "https://www.chipotle.com/#menu",
+      menuDisplayLink: "Chipotle's Menu",
       allergenLink: "https://www.chipotle.com/allergens",
       displayLink: "Chipotle's Allergen Menu",
       yelpUrl: "https://www.yelp.com/biz/chipotle-mexican-grill-lexington-7",
