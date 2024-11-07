@@ -208,6 +208,15 @@ export default function Restaurants() {
                   </h3>
                   <p className="mt-1 text-gray-500">{restaurant.description}</p>
                   <Link
+                    href={restaurant.menuLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 text-decoration: underline"
+                  >
+                    {restaurant.menuDisplayLink}
+                  </Link>
+                  <br></br>
+                  <Link
                     href={restaurant.allergenLink}
                     target="_blank"
                     rel="noopener noreferrer"
