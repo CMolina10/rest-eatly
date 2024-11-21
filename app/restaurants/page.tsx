@@ -13,13 +13,13 @@ interface Restaurant {
   name: string;
   description: string;
   address: string;
+  addressLink: string;
   cuisine: string;
   allergenInfo: string[];
   allergenLink: string;
   displayLink: string | null;
   menuLink: string;
   menuDisplayLink: string | null;
-  yelpUrl: string;
 }
 
 interface FilterTag {
@@ -47,14 +47,13 @@ export default function Restaurants() {
       description:
         "Fast-food chain specializing in fried chicken fingers, crinkle-cut fries & Texas toast.",
       address: "544 S Upper St, Lexington, KY 40508",
+      addressLink: "https://maps.app.goo.gl/EXBsHqUmyrw32peS6",
       cuisine: "Southern",
       allergenInfo: ["shellfish-free", "treenut-free", "peanut-free"],
       menuLink: "https://www.raisingcanes.com/full-menu/",
       menuDisplayLink: "Raising Cane's Menu",
       allergenLink: "https://www.raisingcanes.com/allergens/",
       displayLink: "Raising Cane's Allergen Menu",
-      yelpUrl:
-        "https://www.yelp.com/biz/raising-canes-chicken-fingers-lexington",
     },
     {
       id: 2,
@@ -62,6 +61,7 @@ export default function Restaurants() {
       description:
         "Classic, long-running fast-food chain known for its burgers & fries.",
       address: "357 S Limestone, Lexington, KY 40508",
+      addressLink: "https://maps.app.goo.gl/in1U4QH6cdkmfkTu5",
       cuisine: "American",
       allergenInfo: ["shellfish-free", "treenut-free", "peanut-free"],
       menuLink: "https://www.mcdonalds.com/us/en-us/full-menu.html",
@@ -69,7 +69,6 @@ export default function Restaurants() {
       allergenLink:
         "https://www.mcdonalds.com/content/dam/sites/uk/nfl/pdf/nutrition/allergen-booklet-16102024.pdf",
       displayLink: "McDonald's Allergen Menu",
-      yelpUrl: "https://www.yelp.com/biz/mcdonalds-lexington-3",
     },
     {
       id: 3,
@@ -77,6 +76,7 @@ export default function Restaurants() {
       description:
         "Fast-food chain offering Mexican fare, including design-your-own burritos, tacos & bowls.",
       address: "345 S Limestone, Lexington, KY 40508",
+      addressLink: "https://maps.app.goo.gl/rg56UUJo6LqcFe1g7",
       cuisine: "Mexican",
       allergenInfo: [
         "egg-free",
@@ -89,7 +89,6 @@ export default function Restaurants() {
       menuDisplayLink: "Chipotle's Menu",
       allergenLink: "https://www.chipotle.com/allergens",
       displayLink: "Chipotle's Allergen Menu",
-      yelpUrl: "https://www.yelp.com/biz/chipotle-mexican-grill-lexington-7",
     },
     // Add more sample restaurants as needed
   ]);
@@ -224,9 +223,16 @@ export default function Restaurants() {
                   >
                     {restaurant.displayLink}
                   </Link>
-                  <p className="mt-2 text-sm text-gray-500">
+                  <br></br>
+                  <Link
+                    href={restaurant.addressLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-gray-500 text-decoration: underline"
+                  >
                     {restaurant.address}
-                  </p>
+                  </Link>
+                  
                   <div className="mt-4 flex flex-wrap gap-2">
                     {restaurant.allergenInfo.map((tag) => (
                       <span
@@ -241,6 +247,12 @@ export default function Restaurants() {
               </div>
             ))}
           </div>
+
+          {/* Review System */}
+          <ReviewForm
+            restaurants={restaurants}
+            onSubmitReview={handleSubmitReview}
+          />
         </div>
       </div>
     </div>
